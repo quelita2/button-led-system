@@ -60,38 +60,47 @@ void loop() {
 
 ### 📌 Program 2 - Using Arduino Commands
 
-This program showcases the use of Arduino's high-level functions for controlling a simple LED setup with a button. It offers a user-friendly approach to microcontroller programming, making it accessible for individuals who may not be familiar with low-level hardware manipulation. However, it's important to note that this code relies on Arduino's built-in libraries for pin control, which abstract away the low-level details of microcontroller hardware control.
+Este programa demonstra o uso das funções de alto nível do Arduino para controlar uma configuração simples com um LED e um botão. When the pushbutton is pressed, the LED is turned on, and when it is released, the LED is turned off.
 
 **Description of the Code:**
 
-  * Variable Definitions: The program starts by defining three unsigned integer variables - BUTTON_PIN, LED_PIN, and BUTTON_STATE. These variables are used to specify the pins for the button and LED, as well as to store the button's current state (1 for on, 0 for off).
-  * Setup Function: In the setup() function, the code sets up the pinMode for the LED and button pins. The LED_PIN is configured as an OUTPUT, indicating that it will be used to control the LED, while the BUTTON_PIN is set as an INPUT to read the button's state.
-  * Loop Function: The loop() function continuously executes the following steps:
-    * BUTTON_STATE = digitalRead(BUTTON_PIN);: It reads the state of the button using digitalRead() and stores it in the BUTTON_STATE variable.
-    * if (BUTTON_STATE == HIGH) {...} else {...}: It checks the value of BUTTON_STATE. If the button is pressed (HIGH), it turns on the LED by setting LED_PIN to HIGH using digitalWrite(). Otherwise, it turns off the LED by setting LED_PIN to LOW.
-    * delay(100);: A delay of 100 milliseconds is added to avoid rapid toggling of the LED state.
+* Variable Declarations: The program starts by declaring two constant integer variables, buttonPin and ledPin, to specify the pin numbers for the pushbutton and the LED, respectively. Additionally, there is an integer variable buttonState to store the current state of the pushbutton.
+* Setup Function: In the setup() function, the code performs the following actions:
+ * Configures the ledPin as an OUTPUT, indicating that it will control the LED.
+ * Configures the buttonPin as an INPUT with an internal pull-up resistor. The pull-up resistor ensures that the button's pin is pulled HIGH when the button is not pressed.
+* Loop Function: The loop() function is the main program loop, and it continuously executes the following steps:
+ * Reads the state of the pushbutton using digitalRead(buttonPin) and stores it in the buttonState variable.
+ * Checks if the pushbutton is pressed. If the buttonState is LOW, it indicates that the button is pressed.
+ * If the button is pressed (LOW), the code sets the ledPin to HIGH using digitalWrite(ledPin, HIGH), turning on the LED.
+ * If the button is not pressed (HIGH), the code sets the ledPin to LOW using digitalWrite(ledPin, LOW), turning off the LED.
 
 ```c
-#include <util/delay.h>
+const int buttonPin = 3;  // the number of the pushbutton pin
+const int ledPin = 4;    // the number of the LED pin
 
-int buttonPin = 3;      
-int ledPin = 4;         
+// variables will change:
+int portState = 0;  // variable for reading the pushbutton status
 
-int main(void) {
-     DDRD |= (1 << DDD4);     
-    PORTD &= ~(1 << PORTD4); 
-
-    while (1) {
-        if (PIND & (1 << PIND3)) {
-            PORTD |= (1 << PORTD4); 
-        } else {
-            PORTD &= ~(1 << PORTD4); 
-        }
-    }
-
-    return 0;
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(ledPin, OUTPUT);
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
+void loop() {
+  // read the state of the pushbutton value:
+  portState = digitalRead(buttonPin);
+
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (portState == LOW) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+  } else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
+  }
+}
 ```
 
 ### 📌 Equivalent Commands

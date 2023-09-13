@@ -60,7 +60,7 @@ void loop() {
 
 ### 📌 Program 2 - Using Arduino Commands
 
-Este programa demonstra o uso das funções de alto nível do Arduino para controlar uma configuração simples com um LED e um botão. When the pushbutton is pressed, the LED is turned on, and when it is released, the LED is turned off.
+This program demonstrates the use of Arduino's high-level functions to control a simple setup with an LED and a button. When the pushbutton is pressed, the LED is turned on, and when it is released, the LED is turned off.
 
 **Description of the Code:**
 

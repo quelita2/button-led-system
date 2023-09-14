@@ -160,15 +160,6 @@ int main(void) {
 }
 ```
 
-### 📌 Equivalent Commands
-
-..
-
-### 📄 Report
-
-[ ] - Access the report [here](./assets/docs/project_report.pdf).
-
-
 ### 🫂 Authors
 
 - [Ernane Ferreira](https://github.com/ernanej)

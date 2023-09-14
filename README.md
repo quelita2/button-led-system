@@ -20,8 +20,9 @@ The objective of this project was to design a system that turns on an LED while 
 | [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) |
 
 ## 💻 Simulation
-
-[Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)
+|Protoboard sistem (pull-up extern)| Protoboard sistem (pull-up nativ) |
+|----------------------------------|-----------------------------------|
+|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)||
 
 ### 📌 Program 1 - Direct Register Manipulation
 
@@ -80,6 +81,24 @@ void loop() {
 }
 ```
 
+**Equivalent code using register access:**
+```c
+int main(void) {
+    DDRD |= (1 << DDD4);     // Configure ledPin (pin 4) as an output
+    PORTD &= ~(1 << PORTD4); // Turn off the LED initially
+
+    while (1) {
+        if (PIND & (1 << PIND3)) {
+            PORTD |= (1 << PORTD4); // Turn on the LED
+        } else {
+            PORTD &= ~(1 << PORTD4); // Turn off the LED
+        }
+    }
+
+    return 0;
+}
+```
+
 ### 📌 Program 2 - Using Arduino Commands
 
 This program demonstrates the use of Arduino's high-level functions to control a simple setup with an LED and a button. When the pushbutton is pressed, the LED is turned on, and when it is released, the LED is turned off.
@@ -122,6 +141,22 @@ void loop() {
     // turn LED off:
     digitalWrite(ledPin, LOW);
   }
+}
+```
+**Equivalent code using register access:**
+```c
+int main(void) {
+    DDRD = 0x10;   // Configura ledPin (pino 4) como saída
+    PORTD = 0x08;  // Configura o pino 3 como Pull-up 
+  
+    while (1) {
+        if (PIND & 0x08) { // PIND - Registrador de leitura do estado do Port D
+            PORTD = 0x08;  // Desliga o LED
+        } else {
+            PORTD = 0x18;  // Liga o LED
+        }
+    }
+    return 0;
 }
 ```
 

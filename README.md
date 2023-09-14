@@ -15,17 +15,40 @@ The objective of this project was to design a system that turns on an LED while 
 
 ## 💡 Schematic View
 
-|                                                    Schematic view of the project (Arduino Uno ATMega328p)                                                 |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) |
+| Schematic view of the project (Arduino Uno ATMega328p with external pull-up) | Schematic view of the project (Arduino Uno ATMega328p with native pull-up) |
+|------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) | [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic-pull-up.png)](./assets/docs/button-led-system-schematic-pull-up.pdf) |
 
 ## 💻 Simulation
-
-[Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)
+|Protoboard system (external pull-up)| Protoboard system (native pull-up) |
+|----------------------------------|-----------------------------------|
+|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)|![Button LED System Simulation](./assets/imgs/button-led-system-simulation-pull-up.png)||
 
 ### 📌 Program 1 - Direct Register Manipulation
 
 This program demonstrates the use of direct register manipulation on an AVR microcontroller to control an LED based on the state of a button. It provides a simple example of how to configure and control input and output pins without relying on high-level libraries, offering greater control over the microcontroller's hardware.
+
+Instructions for implementing logic with registers:
+
+| Constant  | Description                                      |
+|------------|------------------------------------------------|
+| PORTD      | Output Control Register for Port D      |
+| DDRD       | Data Direction Register for Port D|
+| PIND       | Input State Register for Port D      |
+| PD0 to PD7  | Digital I/O Pins of Port D                  |
+| PORTB      | Output Control Register for Port B      |
+| DDRB       | Data Direction Register for Port B|
+| PINB       | Input State Register for Port B      |
+| PB0 to PB7  | Digital I/O Pins of Port B                  |
+| PORTC      | Output Control Register for Port C      |
+| DDRC       | Data Direction Register for Port C|
+| PINC       | Input State Register for Port C      |
+| PC0 to PC7  | Digital I/O Pins of Port C                  |
+| HIGH       | Represents logic level high (1)              |
+| LOW        | Represents logic level low (0)             |
+| INPUT      | Sets the pin as input                      |
+| OUTPUT     | Sets the pin as output                        |
+| INPUT_PULLUP | Sets the pin as input with an active pull-up resistor |
 
 **Description of the Code:**
 
@@ -55,6 +78,24 @@ void loop() {
   }
 
   delay(100);
+}
+```
+
+**Equivalent code using register access:**
+```c
+int main(void) {
+    DDRD |= (1 << DDD4);     // Configure ledPin (pin 4) as an output
+    PORTD &= ~(1 << PORTD4); // Turn off the LED initially
+
+    while (1) {
+        if (PIND & (1 << PIND3)) {
+            PORTD |= (1 << PORTD4); // Turn on the LED
+        } else {
+            PORTD &= ~(1 << PORTD4); // Turn off the LED
+        }
+    }
+
+    return 0;
 }
 ```
 
@@ -102,19 +143,22 @@ void loop() {
   }
 }
 ```
-
-### 📌 Equivalent Commands
-
-..
-
-### 📌 Runtime
-
-..
-
-### 📄 Report
-
-[ ] - Access the report [here](./assets/docs/project_report.pdf).
-
+**Equivalent code using register access:**
+```c
+int main(void) {
+    DDRD = 0x10;   // Configura ledPin (pino 4) como saída
+    PORTD = 0x08;  // Configura o pino 3 como Pull-up 
+  
+    while (1) {
+        if (PIND & 0x08) { // PIND - Registrador de leitura do estado do Port D
+            PORTD = 0x08;  // Desliga o LED
+        } else {
+            PORTD = 0x18;  // Liga o LED
+        }
+    }
+    return 0;
+}
+```
 
 ### 🫂 Authors
 

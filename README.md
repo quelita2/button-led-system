@@ -127,10 +127,6 @@ void loop() {
 
 ..
 
-### 📌 Runtime
-
-..
-
 ### 📄 Report
 
 [ ] - Access the report [here](./assets/docs/project_report.pdf).

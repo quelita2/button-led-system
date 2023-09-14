@@ -15,14 +15,14 @@ The objective of this project was to design a system that turns on an LED while 
 
 ## 💡 Schematic View
 
-|                                                    Schematic view of the project (Arduino Uno ATMega328p)                                                 |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) |
+| Schematic view of the project (Arduino Uno ATMega328p with external pull-up) | Schematic view of the project (Arduino Uno ATMega328p with native pull-up) |
+|------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) | [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) |
 
 ## 💻 Simulation
-|Protoboard sistem (pull-up extern)| Protoboard sistem (pull-up nativ) |
+|Protoboard system (external pull-up)| Protoboard system (native pull-up) |
 |----------------------------------|-----------------------------------|
-|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)||
+|![Button LED System Simulation](./assets/imgs/button-led-system-simulation.png)|![Button LED System Simulation](./assets/imgs/button-led-system-simulation-pull-up.png)||
 
 ### 📌 Program 1 - Direct Register Manipulation
 

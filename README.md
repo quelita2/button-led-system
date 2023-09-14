@@ -27,25 +27,27 @@ The objective of this project was to design a system that turns on an LED while 
 
 This program demonstrates the use of direct register manipulation on an AVR microcontroller to control an LED based on the state of a button. It provides a simple example of how to configure and control input and output pins without relying on high-level libraries, offering greater control over the microcontroller's hardware.
 
-| Constante  | Descrição                                      |
+Instructions for implementing logic with registers:
+
+| Constant  | Description                                      |
 |------------|------------------------------------------------|
-| PORTD      | Registrador de controle de saída do Port D      |
-| DDRD       | Registrador de configuração de direção do Port D|
-| PIND       | Registrador de leitura do estado do Port D      |
-| PD0 a PD7  | Pinos de I/O digital do Port D                  |
-| PORTB      | Registrador de controle de saída do Port B      |
-| DDRB       | Registrador de configuração de direção do Port B|
-| PINB       | Registrador de leitura do estado do Port B      |
-| PB0 a PB7  | Pinos de I/O digital do Port B                  |
-| PORTC      | Registrador de controle de saída do Port C      |
-| DDRC       | Registrador de configuração de direção do Port C|
-| PINC       | Registrador de leitura do estado do Port C      |
-| PC0 a PC7  | Pinos de I/O digital do Port C                  |
-| HIGH       | Representa o nível lógico alto (1)              |
-| LOW        | Representa o nível lógico baixo (0)             |
-| INPUT      | Define o pino como entrada                      |
-| OUTPUT     | Define o pino como saída                        |
-| INPUT_PULLUP | Define o pino como entrada com resistor pull-up ativo |
+| PORTD      | Output Control Register for Port D      |
+| DDRD       | Data Direction Register for Port D|
+| PIND       | Input State Register for Port D      |
+| PD0 to PD7  | Digital I/O Pins of Port D                  |
+| PORTB      | Output Control Register for Port B      |
+| DDRB       | Data Direction Register for Port B|
+| PINB       | Input State Register for Port B      |
+| PB0 to PB7  | Digital I/O Pins of Port B                  |
+| PORTC      | Output Control Register for Port C      |
+| DDRC       | Data Direction Register for Port C|
+| PINC       | Input State Register for Port C      |
+| PC0 to PC7  | Digital I/O Pins of Port C                  |
+| HIGH       | Represents logic level high (1)              |
+| LOW        | Represents logic level low (0)             |
+| INPUT      | Sets the pin as input                      |
+| OUTPUT     | Sets the pin as output                        |
+| INPUT_PULLUP | Sets the pin as input with an active pull-up resistor |
 
 **Description of the Code:**
 

@@ -17,7 +17,7 @@ The objective of this project was to design a system that turns on an LED while 
 
 | Schematic view of the project (Arduino Uno ATMega328p with external pull-up) | Schematic view of the project (Arduino Uno ATMega328p with native pull-up) |
 |------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) | [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) |
+| [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic.png)](./assets/docs/button-led-system-schematic.pdf) | [![Schematic view of the project (Arduino Uno ATMega328p)](./assets/imgs/button-led-system-schematic-pull-up.png)](./assets/docs/button-led-system-schematic-pull-up.pdf) |
 
 ## 💻 Simulation
 |Protoboard system (external pull-up)| Protoboard system (native pull-up) |
